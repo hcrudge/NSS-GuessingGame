@@ -10,11 +10,11 @@ namespace GuessingGame
         static void Main(string[] args)
         {
             List<int> Guesses = new List<int>();
+            int secretNumber = createRandomInt();
             while (Guesses.Count < 4)
             {
-                int secretNumber = 42;
                 Console.WriteLine("Guess the secret number. ");
-                Console.Write($"Your guess({Guesses.Count + 1})>");
+                Console.Write($"Remaining guesses({4 -(Guesses.Count)})>");
                 string answer = Console.ReadLine().ToLower();
                 int numAnswer = int.Parse(answer);
                 // Console.Write(numAnswer);
@@ -26,10 +26,18 @@ namespace GuessingGame
                 else
                 {
                     Console.WriteLine("Incorrect! Try again.");
+                    // Console.WriteLine($"{secretNumber}");
                     Guesses.Add(numAnswer);
 
                 }
             };
+            int createRandomInt()
+            {
+
+                Random randomNum = new Random();
+                int randomInt = randomNum.Next(1, 100);
+                return randomInt;
+            }
         }
     }
 }
