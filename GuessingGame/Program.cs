@@ -11,14 +11,34 @@ namespace GuessingGame
         {
             List<int> Guesses = new List<int>();
             int secretNumber = createRandomInt();
-            while (Guesses.Count < 4)
+            int numOfGuesses = 1;
+            Console.WriteLine("Select Difficulty Level (Easy/Medium/Hard)>");
+            string difficultyAnswer = Console.ReadLine().ToLower();
+            Console.WriteLine("Guess the secret number between 1 & 100. ");
+
+            while (Guesses.Count < numOfGuesses)
             {
-                Console.WriteLine("Guess the secret number. ");
-                Console.Write($"Remaining guesses({4 - (Guesses.Count)})>");
+                if (difficultyAnswer == "easy")
+                {
+                    numOfGuesses = 8;
+                }
+                else if (difficultyAnswer == "medium")
+                {
+                    numOfGuesses = 6;
+                }
+                else if (difficultyAnswer == "hard")
+                {
+                    numOfGuesses = 4;
+                }
+                Console.Write($"Remaining guesses({numOfGuesses - (Guesses.Count)})>");
                 string answer = Console.ReadLine().ToLower();
-                int numAnswer = int.Parse(answer);
-                // Console.Write(numAnswer);
-                if (secretNumber == numAnswer)
+                int answerAsNum = int.Parse(answer);
+                // Console.Write(answerAsNum);
+
+
+
+
+                if (secretNumber == answerAsNum)
                 {
                     Console.WriteLine("You guessed it!!");
                     break;
@@ -26,8 +46,8 @@ namespace GuessingGame
                 else
                 {
                     // Console.WriteLine($"{secretNumber}");
-                    Guesses.Add(numAnswer);
-                    if (secretNumber > numAnswer)
+                    Guesses.Add(answerAsNum);
+                    if (secretNumber > answerAsNum)
                     {
                         Console.WriteLine("Incorrect! Your guess is too low.");
                     }
@@ -44,7 +64,11 @@ namespace GuessingGame
                 Random randomNum = new Random();
                 int randomInt = randomNum.Next(1, 100);
                 return randomInt;
-            }
+            };
+
+
+
         }
     }
 }
+
