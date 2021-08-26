@@ -9,18 +9,24 @@ namespace GuessingGame
     {
         static void Main(string[] args)
         {
+            List<int> Guesses = new List<int>();
+            while( Guesses.Count < 4)
+            {
             int secretNumber = 42;
             Console.Write("Guess the secret number: ");
             string answer = Console.ReadLine().ToLower();
-            // Console.Write(answer);
-            if(secretNumber == int.Parse(answer))
+            int numAnswer = int.Parse(answer);
+            // Console.Write(numAnswer);
+            if(secretNumber == numAnswer)
             {
                 Console.WriteLine("You guessed it!!");
             }
             else
             {
                 Console.WriteLine("Incorrect! Try again.");
+                Guesses.Add(numAnswer);
             }
+            };
         }
     }
 }
