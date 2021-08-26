@@ -14,7 +14,7 @@ namespace GuessingGame
             while (Guesses.Count < 4)
             {
                 Console.WriteLine("Guess the secret number. ");
-                Console.Write($"Remaining guesses({4 -(Guesses.Count)})>");
+                Console.Write($"Remaining guesses({4 - (Guesses.Count)})>");
                 string answer = Console.ReadLine().ToLower();
                 int numAnswer = int.Parse(answer);
                 // Console.Write(numAnswer);
@@ -25,9 +25,16 @@ namespace GuessingGame
                 }
                 else
                 {
-                    Console.WriteLine("Incorrect! Try again.");
                     // Console.WriteLine($"{secretNumber}");
                     Guesses.Add(numAnswer);
+                    if (secretNumber > numAnswer)
+                    {
+                        Console.WriteLine("Incorrect! Your guess is too low.");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Incorrect! Your guess is too high.");
+                    }
 
                 }
             };
